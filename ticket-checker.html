@@ -1,0 +1,97 @@
+<html>
+	<head>
+		<style>
+			.tkt-check {
+				text-align: center;
+				margin: 0 auto;
+				padding: 0;
+			}
+			.tkt-check .info-text {
+				font-size: 1.25rem;
+				padding-bottom: 12px;
+			}
+			.tkt-check .search-func .text-box {
+				width: 350px;
+				padding: 5px;
+				margin: 15px 0;
+				border: 3px solid #2ec2de;
+        color: #333333;
+			}
+      .tkt-check .search-func .search-btn {
+        padding: 12.5px 30px;
+        font-size: 1.25rem;
+        background-color: #2ec2de;
+        color: #FFFFFF;
+        border: none;
+      }
+      .tkt-check #displayItem {
+        margin: 15px auto;
+        width: 0%;
+        min-width: 350px;
+        text-align: left;
+      }
+			.tkt-check #displayItem span {
+				padding: 10px;
+        text-transform: capitalize;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="tkt-check" id="tkt-check">
+			<div class="info-text">
+				Enter your Ticket Number or Last Name below to see if you're a winner!
+			</div>
+			<form class="search-func">
+				<input
+					type="text"
+					name="input"
+					id="input"
+					class="text-box"
+					placeholder="eg. Smith or ABC1234567890"
+				/><br />
+				<input type="button" id="submit" class="search-btn" value="Search" />
+			</form>
+			<div id="displayItem"></div>
+		</div>
+
+		<script>
+
+      // PLACE JSON WITHIN VARIABLE BELOW
+			const rawCSV = [
+        // PLACE JSON INSIDE HERE
+      ];
+
+			const data = rawCSV;
+
+			submit.onclick = function search() {
+				const check = document.getElementById('input').value.toUpperCase();
+
+				const result = [];
+
+				for (let i = 0; i < data.length; i++) {
+					if (i == data.length - 1) {
+						if (result.length > 0) {
+							result.forEach(
+								(winner) =>
+									(displayItem.innerHTML +=
+										"<br><span class='item'>" +
+										Object.values(winner).join('</span><span class="item">'))
+							);
+						} else {
+							displayItem.innerHTML =
+								'<span class="no-win">Sorry, you were not a winner</span>';
+						}
+					}
+					if (data[i].LastName === check) {
+						result.push(data[i]);
+					}
+					if (data[i].Winner === check) {
+						result.push(data[i]);
+					} else {
+						console.log('No Match');
+					}
+				}
+			};
+		</script>
+	</body>
+</html>
