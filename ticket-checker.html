@@ -15,24 +15,23 @@
 				padding: 5px;
 				margin: 15px 0;
 				border: 3px solid #2ec2de;
-        color: #333333;
+				color: #333333;
 			}
-      .tkt-check .search-func .search-btn {
-        padding: 12.5px 30px;
-        font-size: 1.25rem;
-        background-color: #2ec2de;
-        color: #FFFFFF;
-        border: none;
-      }
-      .tkt-check #displayItem {
-        margin: 15px auto;
-        width: 0%;
-        min-width: 350px;
-        text-align: left;
-      }
+			.tkt-check .search-func .search-btn {
+				padding: 12.5px 30px;
+				font-size: 1.25rem;
+				background-color: #2ec2de;
+				color: #ffffff;
+				border: none;
+			}
+			.tkt-check #displayItem {
+				margin: 15px auto;
+				width: 70%;
+				min-width: 300px;
+			}
 			.tkt-check #displayItem span {
 				padding: 10px;
-        text-transform: capitalize;
+				text-transform: capitalize;
 			}
 		</style>
 	</head>
@@ -55,11 +54,45 @@
 		</div>
 
 		<script>
-
-      // PLACE JSON WITHIN VARIABLE BELOW
+			// PLACE JSON WITHIN VARIABLE BELOW
+			// MUST BE WITHIN THE ARRAY 
 			const rawCSV = [
-        // PLACE JSON INSIDE HERE
-      ];
+				{
+					Winner: 'ABC1234567890',
+					FirstName: 'JOHN',
+					LastName: 'SMITH',
+					City: 'CALGARY',
+					Product: '$100 Cash'
+				},
+				{
+					Winner: 'DEF0987654321',
+					FirstName: 'JIM',
+					LastName: 'DOE',
+					City: 'CALGARY',
+					Product: '$100 Cash'
+				},
+				{
+					Winner: 'HIJ123123123',
+					FirstName: 'JANE',
+					LastName: 'DOE',
+					City: 'CALGARY',
+					Product: '$100 Cash'
+				},
+				{
+					Winner: 'KLM999999999',
+					FirstName: 'TOM',
+					LastName: 'SAWYER',
+					City: 'CALGARY',
+					Product: '$100 Cash'
+				},
+				{
+					Winner: 'NOP888888888',
+					FirstName: 'HUCK',
+					LastName: 'FIN',
+					City: 'CALGARY',
+					Product: '$100 Cash'
+				}
+			];
 
 			const data = rawCSV;
 
@@ -67,6 +100,8 @@
 				const check = document.getElementById('input').value.toUpperCase();
 
 				const result = [];
+
+				displayItem.innerHTML = '<div></div>';
 
 				for (let i = 0; i < data.length; i++) {
 					if (i == data.length - 1) {
